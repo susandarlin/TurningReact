@@ -1,0 +1,27 @@
+<html>
+    <body>
+        
+    </body>
+    <script>
+
+        let arr = [1,2,100,11,3];
+        let str = '' + arr; // call join() automatically
+        console.log('Str ', str);
+
+        str = arr.join(':'); // can define customize separator
+        console.log('Str ', str);
+
+        console.log('isArrary ', Array.isArray(arr)); // Static method
+
+        // Array Like Object - eg: arguments => it is not array but include Length and Index
+        function display()
+        {
+            console.log('Arguments ', arguments);
+        }
+        display(1,2,3);
+        
+        // Strings as Arrays - string has Length, JS allow to get properties by []
+        console.log('hello'[2]); // result : l
+
+    </script>
+</html>

@@ -1,0 +1,37 @@
+<html>
+    <body>
+        
+    </body>
+    <script>
+
+        // max(1,2)
+        // max (33, 3, 1)
+        // ES6
+        // Rest Parameter -> save as array
+        // max(a,...args) -> a is varivable length argument limitation
+       function max(a,...args)
+       {
+            console.log('Args ', args); // args -> array
+            console.log('Argument ', arguments); // arguments -> array like obj
+       }
+       max(1,2);
+       max(33,3,1);
+
+       // array destructuring
+       let arr = [30,20];
+       max(10,...arr);
+       max(10,arr);
+
+       // Object destructuring
+       function display(name, age)
+       {
+        console.log('Name ', name, ' Age ', age);
+       }
+       let obj = {
+        name : 'TK',
+        age : 38
+       };
+       display(obj);
+
+    </script>
+</html>

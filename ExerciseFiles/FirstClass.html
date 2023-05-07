@@ -1,0 +1,39 @@
+<html>
+    <body>
+        
+    </body>
+    <script>
+
+        // Function as Values
+        // function, object and class as first class or value
+        // First Class is with rule 3
+
+        // 1. can assign function to variable
+        function hello()
+        {
+            console.log('Hello executed');
+        }
+        const fun = hello;
+        fun();
+
+        // 2. can pass as parameter
+        function higherOrder(fun)
+        {
+            fun();
+        }
+        higherOrder(hello);
+
+        // 3. can return from function
+        function getfun()
+        {
+            return function()
+            {
+                console.log('Returned function excuted');
+            }
+        }
+        getfun()();
+
+        // higherOrde() and getfun() is higher order function
+        // If not first class, can't run compositon and pipeline 
+    </script>
+</html>

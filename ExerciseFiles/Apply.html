@@ -1,0 +1,20 @@
+<html>
+    <body>
+        
+    </body>
+    <script>
+
+        // use Call and Apply when we can't access this keyword
+        // Why Array in Apply
+        // for old version problem, for ES6 we can use Spread
+        // Math.min can't give array, need to insert comma
+        
+        let arr = [10,2,100,5];
+         
+        console.log('Math.min ', Math.min(...arr)); // In ES6
+        console.log('Math.min ', Math.min.apply(null, arr)); // old - use Apply(obj, parameter)
+        // Why parse Null - apply(null, arr)
+        // Math.min is static method, not call from obj, access from class
+
+    </script>
+</html>

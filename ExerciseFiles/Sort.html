@@ -1,0 +1,69 @@
+<html>
+    <body>
+        
+    </body>
+    <script>
+
+        // sort - First, sorting String instead of Number
+        let arr = [1,2,100,11,3];
+        arr.sort();
+
+        console.log("Arr ", arr); // result: [1,100,112,3]
+
+        /*
+            == 0
+            > 1
+            < -1
+        */
+
+        function comparator(a,b)
+        {
+            // return a-b; // small to large -> result: [1, 100, 11, 2, 3]
+            return b-a; // large to small -> result: [100, 11, 3, 2, 1]
+        }
+
+        arr.sort(comparator);
+        console.log('Arr ', arr);
+
+
+
+        let objArr = [
+            {
+                name : 'TK',
+                age : 38,
+            },
+            {
+            name : 'Win Naing',
+                age : 20,
+            },
+            {
+            name : 'Mya Mya',
+                age : 45,
+            },
+            {
+            name : 'Aung Aung',
+                age : 20,
+            }
+        ];
+        objArr.sort((a,b)=> a.age - b.age);
+        console.log('ObjArr ', objArr);
+
+        // For same Age, sort by Name
+        objArr.sort((a,b) => {
+            if(a.age == b.age)
+            {
+                return a.name.localeCompare(b.name); // localeCompare -> Compare String
+            }
+            else
+            {
+                return a.age - b.age;
+            }
+        });
+        console.log('ObjArr ', objArr);
+
+        // reverse
+        objArr.reverse();
+        console.log('ObjArr ', objArr);
+
+    </script>
+</html>

@@ -1,0 +1,31 @@
+<html>
+    <body>
+        
+    </body>
+    <script>
+
+        // want to know students age
+        // we don't do like below, we use Array
+        let age0 = 20;
+        let age1 = 30;
+        let age2 = 25;
+
+        //Array
+        // Mixed type because Dynamic Language
+        // there is limit in Static Language
+        // there is no limit in Dynamic Language
+        let ages = [20, 30, 25, true, false, "Hello"]; 
+        console.log('Ages 0', ages[0]);
+        console.log('Ages 1', ages[1]);
+        console.log('Ages 2', ages[2]);
+
+        ages[10] = 22;
+        console.log("Ages ", ages);
+        console.log("Ages 6", ages[6]);
+
+        // Limit Array manually
+        ages.length = 4;
+        console.log("Ages ", ages);
+
+    </script>
+</html>

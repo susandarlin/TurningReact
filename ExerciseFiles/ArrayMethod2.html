@@ -1,0 +1,31 @@
+a<html>
+    <body>
+        
+    </body>
+    <script>
+
+        // Array is Object, so there is Method
+        // Array Iterator Method - eg: forEach
+
+        let arr = [1,2,3,10,20];
+        console.log('Arr ', arr);
+
+        // 3 parameter
+        // forEach accept Function- forEach is Function and can parse Function in it
+        function print(element, index, array)
+        {
+            console.log('Element ', element, ' Index ', index, ' Arr ', array);
+        }
+        arr.forEach(print);
+
+        // Map - return new array, no changes in original array (immutable concept), differences forEach
+        function double(x)
+        {
+            return x * 2;
+        }
+        let doubleArr = arr.map(double);
+        console.log('Double arr ', doubleArr);
+        console.log('Arr ', arr);
+
+    </script>
+</html>

@@ -1,0 +1,32 @@
+<html>
+    <body>
+        
+    </body>
+    <script>
+
+        // Array Literal
+        let ages = [20, 30,25];
+
+        // Spread Symbol
+        let str = 'Hello';
+        let arr = [...str];
+        console.log("Arr ", arr);
+
+        // Array constructor ( should not use - old way)
+        // Constructor (create Object)
+        let arr2 = new Array(1, 2, 3);
+        console.log('Arr2', arr2);
+        //Problem - if we provide one element, it will be array size with empty value
+        let arr3 = new Array(10);
+        console.log('Arr3 ', arr3);
+
+        let arr4 = Array.of(1, 10, 20);
+        console.log('Arr4 ', arr4);
+
+
+        let arr5 = Array.from(arr2);
+        console.log('Arr5 ', arr5);
+
+
+    </script>
+</html>

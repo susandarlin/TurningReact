@@ -1,0 +1,21 @@
+<html>
+    <body>
+        
+    </body>
+    <script>
+
+        // Slice - return new array, copy array
+        const animals = ['ant', 'bison', 'camel', 'duck', 'elephant'];
+        console.log('animals ', animals);
+        console.log('slice 2 ', animals.slice(2));
+        // eg: slice(1, arr.length), design for Length, length is not index so we need to put (length - 1), slice no need to do like that just parse array length
+        console.log('slice 2, 4 ', animals.slice(2, 4)); // result : 'camel', 'duck' , before 4
+        console.log('slice -2 ', animals.slice(-2));
+        console.log('slice -2, -1 ', animals.slice(-2, -1));
+
+        let clone = animals.slice();
+        console.log('Clone ', clone);
+        console.log('animal == clone ', animals == clone);
+
+    </script>
+</html>5

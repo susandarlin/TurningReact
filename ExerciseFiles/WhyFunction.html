@@ -1,0 +1,53 @@
+<html>
+    <body>
+        
+    </body>
+    <script>
+
+        /* console.log('Hi How are you');
+        console.log('Good afternoon');
+        console.log('Hello');
+
+        console.log('Hi How are you');
+        console.log('Good afternoon');
+        console.log('Hello');
+
+        console.log('Hi How are you');
+        console.log('Good afternoon');
+        console.log('Hello');
+        */
+
+        // Function - code reuse and decomposition(separate small function)
+        function hello(msg) // function header
+        // function body
+        {
+            console.log('Hi How are you');
+            console.log('Good afternoon');
+            console.log('Hello');
+        }
+        
+        hello();
+        // hello();
+        // hello();
+
+        // Function is callable object in JS
+        // name, length etc is default property of function
+        console.log(hello.name);
+        console.log(hello.length); // length is parameter count
+
+        // functio expression - return function value
+        // expression is return value
+        const fun = function()
+        {
+            console.log('Function fun executed');
+        }
+        fun();
+
+        // Arrow Functions
+        const fun2 = ()=>console.log('Hello');
+        fun2();
+
+        let fun3 = new Function('', 'console.log("Hello")'); // it isn't best pratice
+        fun3();
+    </script>
+</html>

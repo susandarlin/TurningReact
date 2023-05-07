@@ -1,0 +1,45 @@
+<html>
+    <body>
+        
+    </body>
+    <script>
+
+        // use Call and Apply when we can't access this keyword
+        // Call
+        let obj = {
+            name : 'TK',
+            age : 38,
+            display(msg)
+            {
+                console.log('Name ', this.name, ' Age ', this.age, msg);
+            }
+        };
+        obj.display(); // result : Name  TK  Age  38
+        
+        // function as firstclass
+        let fun = obj.display;
+        fun(); // result : (Name    Age  undefined), can't access this keyword, can get function only, not method
+
+        fun.call(obj, 'Hello'); // result : Name  TK  Age  38 Hello
+        
+        // advantage
+        // there is no method in obj2, borrowing or Mixin -> but we can borrow method from obj when the structure is same.
+        let obj2 = {
+            name : 'Someone',
+            age : 100,
+        };
+        fun.call(obj2, 'Hi');
+
+        // Apply -> we want to provide parameter as Array 
+        // Why Array
+        fun.apply(obj, ['Hello']);
+
+        // Bind -> for readable
+        let fun3 = fun.bind(obj2);
+        fun3('Hello');
+
+        // function constructure and eval should not use, can get problem like RCE(remote code execution)
+        // RCE - whe we request Name from user, user input not only Name but also operation system command, security by pass code command
+
+    </script>
+</html>

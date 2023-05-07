@@ -1,0 +1,74 @@
+a<html>
+    <body>
+        
+    </body>
+    <script>
+
+        // Imperative code - with looping
+        let arr = [
+            {
+                name : 'TK',
+                age : 38,
+                gender: 'male',
+            },
+            {
+                name : 'Hla Hla',
+                age : 22,
+                gender: 'female',
+            },
+            {
+                name : 'Aung Aung',
+                age : 29,
+                gender: 'male',
+            },
+            {
+                name : 'Mya Mya',
+                age : 18,
+                gender: 'female',
+            },
+            {
+                name : 'Aung Min',
+                age : 23,
+                gender: 'male',
+            },
+        ];
+
+        let males = [];
+        for(let i = 0; i < arr.length; i++)
+        {
+            if(arr[i].gender == 'male')
+            {
+                males.push(arr[i]);
+            }
+        }
+        console.log('Males ', males);
+
+        // Filter - every element was run in predicate function and if it is true, put it to result
+        function isMale(obj) // predicate function  ( return ture or false)
+        {
+            return obj.gender == 'male';
+        }
+        let males2 = arr.filter(obj=>obj.gender=='male');
+
+        function getName(obj)
+        {
+            return 'U ' + obj.name;
+        }
+        function isAdult(obj)
+        {
+            return obj.age > 25;
+        }
+
+        // Filter advantage - Chain
+        let males3 = arr.filter(isMale)
+                        .filter(isAdult)
+                        .map(getName);
+        console.log('Males2 ', males2);
+        console.log('Males3 ', males3);  
+
+        // Map and filter -> return new array
+        // Map -> return same array size (for transform)
+        // filter -> return not same size (for selection)
+
+    </script>
+</html>

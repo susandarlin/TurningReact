@@ -1,0 +1,39 @@
+<html>
+    <body>
+        
+    </body>
+    <script>
+
+        /*
+            Higher Order Function - one or two 
+                2. can pass as parameter (input)
+                3. can return from function (ouput)
+
+            First Class Function
+                1. can assign to variable
+                2. can pass as parameter
+                3. can return from function
+
+            HOF example
+            arr.map(fun)
+            arr.filter(fun)
+            arr.reduce(fun)
+
+            Abstraction - replace from complex to simple one
+        */
+
+        let arr = [1,2,3,4];
+        let newArr = [];
+
+        function forEach(arr,fn)
+        {
+            for(let i = 0; i < arr.length; i++)
+            {
+                fn(arr[i]);
+            }
+        }
+
+        forEach(arr,console.log);
+
+    </script>
+</html>

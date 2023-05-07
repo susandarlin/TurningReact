@@ -1,0 +1,49 @@
+a<html>
+    <body>
+        
+    </body>
+    <script>
+
+        // Imperative code - with looping
+        let arr = [
+            {
+                name : 'TK',
+                age : 38,
+                gender: 'male',
+            },
+            {
+                name : 'Hla Hla',
+                age : 22,
+                gender: 'female',
+            },
+            {
+                name : 'Aung Aung',
+                age : 29,
+                gender: 'male',
+            },
+            {
+                name : 'Mya Mya',
+                age : 18,
+                gender: 'female',
+            },
+            {
+                name : 'Aung Min',
+                age : 23,
+                gender: 'male',
+            },
+        ];
+
+        let names = [];
+        for(let i = 0; i < arr.length; i++)
+        {
+            names.push(arr[i].name);
+        }
+        console.log('Names ', names);
+
+        // Map is for function programming to transform
+        // Using Map function - short code instead of above looping code
+        let namesUsingMap = arr.map(obj=>obj.name);
+        console.log('Names ', names);
+
+    </script>
+</html>

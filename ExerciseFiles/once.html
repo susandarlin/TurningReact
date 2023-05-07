@@ -1,0 +1,72 @@
+<html>
+    <body>
+        
+    </body>
+    <script>
+
+        // What is Functional Programing
+        // Imperative Programing and Functional Programming
+        // IP -             FP
+        // use looping,     use Map
+        // use If,          use Filter
+        // mutable          Immutable (don't change data, create new data)
+        // let a=10         concat, slice
+        // a = 20;
+
+        // FP language - haskell, F#, Sacla
+        // language that support FP - JS, Java, C#
+
+
+
+        // want to call function Once
+        let paymentDone = false;
+        function payment()
+        {
+            if(!paymentDone) // cross cutting concern
+            {
+                console.log('Payment called');
+                paymentDone = true;
+            }
+        }
+
+        payment();
+        payment();
+
+
+        function order()
+        {
+            console.log('Order called');
+        }       
+        
+        function execute()
+        {
+            console.log('Excuted');
+        }
+        
+
+        // one of the example of FB
+        // First Class - Function as Variable, Parameter, Reture value
+        function once(fn)
+        {
+            let done = false;
+            return function()
+            {
+                if(!done)
+                {
+                    done = true;
+                    fn();
+                }
+            };
+        }
+        order = once(order);
+        order();
+        order();
+
+        execute = once(execute);
+        execute();
+        execute();
+
+        // Problem - If we want to call Order function once, need to add OrderDone variable
+
+    </script>
+</html>

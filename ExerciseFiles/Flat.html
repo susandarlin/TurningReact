@@ -1,0 +1,27 @@
+<html>
+    <body>
+        
+    </body>
+    <script>
+
+        // flat - change to linear array
+
+        // level 1
+        let arr = [2,3,4,[5,6]];
+        let arr2 = arr.flat();
+        console.log('Arr ', arr2);
+
+        // level 2
+        let arr3 = [2,3,4,[5,6], [[7,8,9]]];
+        let arr4 = arr3.flat(2);
+        console.log('Arr ', arr4);
+
+        let arr5 = [1,2,3,4,5];
+        let arr6 = arr5.map(element => [element, element * 2]);
+        let arr7 = arr5.flatMap(element => [element, element * 2]);
+        console.log('Map Arr ', arr6);
+        console.log('FlatMap Arr ', arr7);
+
+        
+    </script>
+</html>

@@ -1,0 +1,39 @@
+<html>
+    <body>
+        
+    </body>
+    <script>
+
+        // there is no encapsulation, should have encapsulation
+        let obj = {
+            name : 'TK',
+            age : 38
+        };
+        obj.name = 100;
+        console.log('Obj ', obj);
+
+        function stack()
+        {
+            let items = [];
+            function push(element)
+            {
+                items.push(element);
+            }
+            function pop()
+            {
+                return items.pop();
+            }
+            return {
+                push,
+                pop,
+            }
+        }
+        let s1 = stack();
+        s1.push(100);
+        s1.push(200);
+
+        console.log('S1 ', s1);
+        console.log('S1 ', s1.pop());
+
+    </script>
+</html>

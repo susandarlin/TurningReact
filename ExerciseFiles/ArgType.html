@@ -1,0 +1,28 @@
+<html>
+    <body>
+        
+    </body>
+    <script>
+
+        function display(msg, another)
+        {
+            // Type safety - must give 2 arguments when function need 2 Parameters
+            // Check Parameters and Arguments Length
+            console.log('Length ', display.length);
+            console.log('Argument Length ', arguments.length);
+            if(display.length !== arguments.length)
+            {
+                console.warn('Only ', arguments.length, ' supplied but required ', display.length);
+            }
+
+            console.log('Msg ', msg);
+            console.log('Another ', another);
+        }
+        display();
+        display('Hi');
+
+        
+
+
+    </script>
+</html>

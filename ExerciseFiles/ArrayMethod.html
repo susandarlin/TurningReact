@@ -1,0 +1,36 @@
+<html>
+    <body>
+        
+    </body>
+    <script>
+
+        // Push - put element in last
+        let arr = [10, 20, 30];
+        arr.push(40);
+        arr.push(50,60);
+        console.log('Arr ', arr);
+
+        // unshift - put element in front
+        arr.unshift(-100);
+        console.log('Arr ', arr);
+
+        // pop - opposite of push (delete last one)
+        let last = arr.pop();
+        console.log('Arr ', arr); // [-100,10,20,30,40,50]
+        console.log('Last ', last); // 60
+
+        // shift - opposite of unshift (delete first one)
+        let first = arr.shift();
+        console.log('Arr ', arr); 
+        console.log('First ', first);
+
+        // delete - shouldn't use in Array, delete element only, don't change arr length wiht empty value
+        delete arr[0]; // [empty, 20, 30, 40, 50]
+        console.log('Arr ', arr); 
+        console.log('0 in arr ', 0 in arr);
+        console.log('arr[0] ', arr[0]);
+        
+        // for/of to iterate Array - Read only, can't write
+        // If we want to write - use general For loop
+    </script>
+</html>

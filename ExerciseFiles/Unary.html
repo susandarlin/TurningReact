@@ -1,0 +1,45 @@
+<html>
+    <body>
+        
+    </body>
+    <script>
+
+        let arr = ["1", "2", "3", "4"];
+        let numbers = arr.map(parseInt); // parameter - (value,index,arr)
+        console.log('Number ', numbers); // result: Number  (4) [1, NaN, NaN, NaN]
+
+        let arr1 = ["1", "2", "3", "4"];
+        let numbers1 = arr.map((x) => parseInt(x));
+        console.log('Number ', numbers1); // result: Number  (4) [1, 2, 3, 4]
+
+        /*
+            Problem
+            A  1  B  0  C  (4) ['1', '2', '3', '4']
+            A  2  B  1  C  (4) ['1', '2', '3', '4']
+            A  3  B  2  C  (4) ['1', '2', '3', '4']
+            A  4  B  3  C  (4) ['1', '2', '3', '4']
+
+            parseInt(value, index) - using extra param, actually we shouldn't use index param, need to only Num value
+            parseInt(1,0) - result: 1
+            parseInt(2,1) - result: NaN
+        */
+
+        // 1 -> parseInt(num, base)
+        arr.map(function (a,b,c) // (value, index, arr)
+        {
+            console.log('A ', a, ' B ', b, ' C ', c); // result: A  1  B  0  C  (4) ['1', '2', '3', '4']
+        })
+        console.log('ParseInt ', parseInt("11", 2));
+
+        // Why unary - function param that accept 2 param, when we want to change to 1 param
+        // unary usecase
+        const unary = (fn) => fn.length === 1
+                            ? fn
+                            : (arg) => fn(arg) // change to 1 param
+        let numbers3 = arr.map(unary(parseInt));
+        console.log('Number using unary ', numbers3);
+
+
+
+    </script>
+</html>

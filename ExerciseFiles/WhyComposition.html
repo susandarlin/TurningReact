@@ -1,0 +1,53 @@
+<html>
+    <body>
+        
+    </body>
+    <script>
+
+        const toUpper = (msg) => msg.toUpperCase();
+        const appendHi = (msg) => 'Hi ' + msg;
+
+        // Problem - when we want to change toLower instead of toUpper
+        // same imperative style, hard to test 
+        function appendHiAndToUpper(msg)
+        {
+            let result = appendHi(msg);
+            return toUpper(result);
+        }
+        console.log('AppendHi ', appendHiAndToUpper('hello'));
+
+        // small function to big one, want to use dynamic function not static
+        /*
+            f = x => y
+            g = y => z
+            (g(f(x)))
+
+            need to be composablility
+            one output => another input
+            function can return one output=> single input and single output
+
+            mismatch input type
+        */
+       function compose(funA, funB)
+       {
+        return function(msg)
+        {
+            return funA(funB(msg));
+        }
+       }
+       console.log('appendHiToUpper ', toUpper(appendHi('hello')));
+
+       let newfun = compose(toUpper, appendHi);
+       console.log('Compose ', newfun('morning'));
+
+       // compose advantage
+       const addOne = (x)=> x+1;
+       const double = (x)=> x*2;
+       newfun = compose(double, addOne);
+       console.log('NewFunc ', newfun(3));
+
+       newfun = compose(appendHi, addOne);
+       console.log('NewFunc ', newfun(3));
+
+    </script>
+</html>

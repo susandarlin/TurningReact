@@ -1,0 +1,56 @@
+<html>
+    <body>
+        
+    </body>
+    <script>
+
+        // Function Invocation
+        function outer()
+        {
+            console.log('Outer Called');
+        }        
+        outer();
+
+        // Function vs Method
+        // Functio is independent
+        // Method is object function, it can access other object properties
+        // Method Invocation
+        let obj = {
+            x : 10,
+            y : 20,
+            display()
+            {
+                console.log('X ', this.x, ' Y ', this.y)
+            }, 
+            toString()
+            {
+                return 10;
+            },
+            get something()
+            {
+                console.log('get someting called');
+                return 10;
+            }
+        };
+        obj.display();
+
+        // Constructor Invocation - return object(this) without returning
+        // eg: Date, Object, etc..
+        function Human(name, age)
+        {
+            this.name = name;
+            this.age = age; 
+            console.log('Constructor run ');
+        }
+        let obj2 = new Human('TK', 38);
+        console.log('obj2 ', obj2);
+
+        // Indirect Invocation
+        console.log('obj + 3 ', 3 + obj);
+
+        // Implicit and Indirect Invocation - can create getter and setter
+        obj.something;
+
+
+    </script>
+</html>

@@ -1,0 +1,66 @@
+<html>
+    <body>
+        
+    </body>
+    <script>
+
+        // Arrow
+        // normal function
+        function add(x,y)
+        {
+            console.log('Argumetns ', arguments);
+            return x+y;
+        }
+        // arrow function (less code)
+        const add2 = (x,y) => x + y;
+
+        console.log('Add2 ', add2(10,2));
+
+        // arrow with multiple statement
+        // no arguments object in arrow function
+        // arrow function as Constructor and generator
+        // arrwo function as shorthand funciont
+        const double = (x) => {
+            console.log('Double ', x, 'this ', this, ' Arguments ');
+            return x * 2;
+        }
+        let result = double(10);
+        console.log('Result ', result);
+
+        // Problem - Arrow function can't be used as Method, can't access "this" keyword
+        let obj = {
+            name : 'TK',
+            age : 38,
+            display : () => {
+                console.log('No ', this.name, ' Age ', this.age);
+            }
+        }
+        obj.display();
+
+        // FP (no side effect(pure function), only transform (input to output))
+        //  function
+        //      like math function
+        //      add(x,y) => x+y (input to output)
+        // Imperative Programming
+        // let k;
+        // function add(x,y) 
+        // {
+        //     k = 20; (side effect)
+        //     return x+y;
+        // }
+        // Side Effect - reading and writing external variable
+        // Pure function advantage - same input -> same output
+        //      2+3 = 5
+        //      add(2,3) = 5
+        //      add(2,3) = 5 (not excute again and can replace the same result, good performance)
+
+        // how to write pure function - use only function input only, no use external variable
+        // 1. Modifying a variable
+        // 2. Modifying a data structure in place
+        // 3. Setting a field on an object
+        // 4. Throwing an exception or halting with an error
+        // 5. Printing to the console or reading user input
+        // 6. Drawing on the screen
+
+    </script>
+</html>

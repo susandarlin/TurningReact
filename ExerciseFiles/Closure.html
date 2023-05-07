@@ -1,0 +1,45 @@
+<html>
+    <body>
+        
+    </body>
+    <script>
+
+        // Closure(closover) - can write function in function
+        // cann't call inner function 
+        // In Closure, must have inner and outer function, inner function must use outer values
+
+        function outer()
+        {
+            let x = 10;
+            function inner()
+            {
+                console.log('Inner ', x);                
+            }
+            console.log('Outer ');
+            inner();
+        }
+        outer();
+
+
+        // Closure usecase  - data store using closure
+        // use as share property, save state
+        function getUnique()
+        {
+            let x = 1;
+            return function()
+            {
+                return x++;
+            }
+        }
+        let unique = getUnique();
+        console.log('Unique ', unique()); // result : 1
+        console.log('Unique ', unique()); // result : 2
+        console.log('Unique ', unique()); // result : 3
+
+        let unique2 = getUnique();
+        console.log('Unique ', unique2()); // result : 1
+        console.log('Unique ', unique2()); // result : 2
+        console.log('Unique ', unique2()); // result : 3
+
+    </script>
+</html>
