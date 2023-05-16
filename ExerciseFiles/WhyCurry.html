@@ -1,0 +1,74 @@
+<html>
+    <body>
+        
+    </body>
+    <script>
+
+        // composability - singal input and singal output
+
+        const addOne = (x)=> x+1;
+        const double = (x)=> x*2;
+        const addFive = (x) => x + 5;
+        // const sum = (x,y) => x + y; // not singal input
+
+        function sum(x) // Currying for multiple input as singal input
+        {
+            return function(y)
+            {
+                return x + y;
+            }
+        }
+
+        console.log('Sum ', sum(2)(3));
+
+        function pipeN(...fns)
+        {
+            return function(x)
+            {
+                return fns.reduce(function(input,fun)
+                {
+                    return fun(input);
+                }, x);
+            }
+        }
+
+        const tap = (fn) => val => (fn(val), val);
+        const log = tap(console.log);
+
+        let result = pipeN(
+                            log,
+                            sum(3), // partial application (pass only one param to muti input function)
+                            log,
+                            double, 
+                            log,)(2); 
+        console.log('Result ', result); // Result  NaN
+        // Problem is that is not singal input and +underfined is NaN
+        // if we convert Underfined to Number, got NaN      
+        
+        
+
+        let curry = (fn) => {
+            if(typeof fn!== 'function') {
+                throw Error('No function provided');
+            }
+            return function curriedFn(...args) {
+                if(args.length < fn.length) {
+                    return function() {
+                        return curriedFn.apply(null, 
+                                            args.concat( [].slice.call(arguments)));
+                    };
+                };
+                return fn.apply(null, args);
+            };
+        };
+
+        const multiply = (x,y,z) => x * y * z;
+        const curriedMultiply = curry(multiply);
+        console.log('Multiply ', curriedMultiply(2)(3)(4));
+        console.log('Multiply ', curriedMultiply(2,3)(4)); // ...args
+
+
+
+
+    </script>
+</html>

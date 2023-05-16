@@ -1,0 +1,48 @@
+<html>
+    <body>
+        
+    </body>
+    <script>
+
+        // Identity return value of its argument directly without changes
+        // Compose only accept function, can't pass param Literal
+        // So we can use Identity to Compose Literal as function
+        // Literal as Function
+        const identity = (x) => x;
+        console.log('Identity ', identity(3));
+
+        // K Combinator
+        const K = a => b => a;
+        console.log('K ', K(3)(2));
+
+
+        const addOne = (x)=> x+1;
+       const double = (x)=> x*2;
+       const addFive = (x) => x + 5;
+
+       function pipeN(...fns)
+       {
+        return function(x)
+        {
+            return fns.reduce(function(input,fun)
+            {
+                return fun(input);
+            }, x);
+        }
+       }
+
+       const tap = (fn) => val => (fn(val), val); // Curry
+       const log = tap(console.log);
+
+       let result = pipeN(
+                        log,
+                        addOne,
+                        log,
+                        double, 
+                        log,
+                        addFive,
+                        log)(2); 
+       console.log('Result ', result); // 2+1(addOne) = ( 3*2(double) = 6+5(addFive) =  result: 11)
+
+    </script>
+</html>
