@@ -1,0 +1,25 @@
+<html>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ramda/0.29.0/ramda.min.js" integrity="sha512-5x/n+aOg68Z+O/mq3LW2pC2CvEBSgLl5aLlOJa87AlYM1K8b8qsZ7NTHLe3Hu56aS2W0rgEgVCFA3RM12IXAGw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script>
+
+        const C = f => a => b => f(b)(a);
+
+        // Booleans
+        TRUE = a => b => a,
+        FALSE = a => b => b,
+
+        // Logical operators
+        NOT = C;
+        
+        Function.prototype.toJsBool = function() {
+            return this(true)(false);
+        };
+
+        console.log('True ', TRUE.toJsBool());
+        console.log('False ', FALSE.toJsBool());
+        console.log('NOT(False) ', (NOT(FALSE)).toJsBool());
+        console.log('NOT(True) ', (NOT(TRUE)).toJsBool());
+        
+    </script> 
+</html>

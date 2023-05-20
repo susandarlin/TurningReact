@@ -1,0 +1,40 @@
+<html>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ramda/0.29.0/ramda.min.js" integrity="sha512-5x/n+aOg68Z+O/mq3LW2pC2CvEBSgLl5aLlOJa87AlYM1K8b8qsZ7NTHLe3Hu56aS2W0rgEgVCFA3RM12IXAGw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+    <script>
+
+        let arr = [1,2,3,4,5];
+        let result = R.sum(arr); // sum/length
+        console.log('Sum ', result);
+        console.log('R.divide ', R.divide);
+
+        /*
+            5/2, divide(5,2), divide(5)(2)
+            divide(2,5)
+        */
+       let formula = R.pipe(
+            R.flip(R.divide)(2)
+       );
+       console.log('5/2 ', formula(5));
+
+       const nums = [1, 2, 3, -99, 42, 6, 7];
+       console.log("Apply ", R.apply(Math.max, nums));
+
+       let obj = {
+        name : 'TK',
+        age : 38,
+        address : {
+            city : 'Ygn',
+            township : 'Somewhere'
+        }
+       };
+       const getAge = R.prop('age');
+       console.log('getAge ', R.compose(R.inc, getAge)(obj));
+
+       // JS
+       console.log('Path ', obj.address.city); // If we call address2, got error
+       console.log('Path ', R.path(['address', 'city'])(obj)); // If we call address2, not error, get "underfined"
+        
+    </script> 
+</html>

@@ -1,0 +1,40 @@
+<html>
+    <script src="https://cdn.jsdelivr.net/npm/ramda@0.27.1/dist/ramda.min.js"></script>
+
+
+    <script>
+
+        // Fork combinator - computation, if, OR
+
+        const fork = (join, fn1, fn2) => (value) => join(fn1(value), fn2(value));
+
+        /* 
+            divide(sum/length) (arrr)
+        */
+
+        const length = (array) => array.length;
+        const sum = (array) => array.reduce((a,b) => a + b, 0);
+        const divide = (a,b) => a / b;
+
+        const arithmeticAverage = fork(divide, sum, length);
+        console.log('Average ', arithmeticAverage([2,3,4]));
+
+        // Alternative
+        const alt = (fn, orFn) => (value) => fn(value) || orFn(value);
+
+        const isEven = (x) => x % 2 == 0;
+        const notEven = (x) => console.log('It is not even');
+        const func = alt(isEven, notEven);
+        console.log('Func ', func);
+        console.log('Is Even ', isEven(4));
+        console.log('Func 4 ', func(4));
+        console.log('Func 5 ', func(5));
+
+        // Sequence(shouldn't use) - same with compose and pipe (should use)
+
+        // Converge - same with Fork
+        const average = R.converge(R.divide, [R.sum, R.length]);
+        console.log('Average ', average( [1,2,3,4,5,6,7])); // => 4
+
+    </script>
+</html>

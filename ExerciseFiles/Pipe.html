@@ -37,7 +37,7 @@
                         addFive)(2); // left to right
        console.log('Result ', result); // 2+1(addOne) = ( 3*2(double) = 6+5(addFive) =  result: 15)
 
-       // Composition is Associative
+       // Composition is Associative - result is same 
        let formula = pipeN( addOne, pipeN(double, addFive));
        console.log('Result ', formula(2));
 
