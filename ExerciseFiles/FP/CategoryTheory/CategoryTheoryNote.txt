@@ -1,0 +1,43 @@
+/* Category theory
+
+ objects
+    [String], int,
+    input, output
+
+morphism
+    function -> pure function from FP
+
+    1 + 2 + 3
+    (1 + 2) + 3 OR  1 + (2 + 3) => Associativity
+
+f(g x) = (f g)(x)  => Associavity
+
+Identity = x => x
+    0 + 3 = 3
+    3 + 3 = 3
+
+    0 as Identity
+
+
+algebraic data types (ADT) =>  +, -, *, /
+
+Monoid
+    two functions
+    two imput - 1 output
+    1 + 1 = 2
+    String, String => String
+    Number, Number = > Number
+
+    string concat
+    'Hello' + 'hi' = 'Hello hi'
+    (1 + 2) + 3 OR  1 + (2 + 3) => Associativity
+
+    array       = sum
+    1 millions  
+    10 group (parallel)
+
+    [1,2 ,3]
+    [1,2] [3] // Identity element => 0 as Identity for sum
+    * for 1 as Identity fo Multiplication
+    string concat ''
+ */

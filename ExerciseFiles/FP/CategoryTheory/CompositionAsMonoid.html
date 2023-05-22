@@ -1,0 +1,34 @@
+<html>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ramda/0.29.0/ramda.min.js" integrity="sha512-5x/n+aOg68Z+O/mq3LW2pC2CvEBSgLl5aLlOJa87AlYM1K8b8qsZ7NTHLe3Hu56aS2W0rgEgVCFA3RM12IXAGw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+    <script>
+
+        const identity = (x) => x;
+        const compose = (funA, funB) => x => funA(funB(x));
+        const incOne = (x) => x + 1;
+        const double = (x) => x * 2;
+        const addTwo = (x) => x + 2;
+        
+        let newFun = compose(incOne, addTwo);
+        console.log('NewFun ', newFun(3));
+
+        var Composition = { empty: () => identity, concat: compose }        
+
+
+        var fold = function (array, monoid) {
+            var accumulation = monoid.empty();
+            for (let i = 0; i < array.length; i++ )
+            {
+                const element = array[i];
+                accumulation = monoid.concat(accumulation, element)
+            }
+            return accumulation;
+        }
+
+        let func = fold( [incOne, double, addTwo], Composition);
+        console.log('Func ', func);
+        console.log('Func ', func(3));
+        
+    </script> 
+</html>

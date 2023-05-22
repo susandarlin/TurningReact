@@ -1,0 +1,53 @@
+<html>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ramda/0.29.0/ramda.min.js" integrity="sha512-5x/n+aOg68Z+O/mq3LW2pC2CvEBSgLl5aLlOJa87AlYM1K8b8qsZ7NTHLe3Hu56aS2W0rgEgVCFA3RM12IXAGw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+    <script>
+
+        /* Functor - contain Map that transform and return new one
+            Functor is a Container(Box)
+        */
+
+        /*
+        let count = 1;
+        count = count + 1;
+        */
+
+        const identity = (x) => x;
+        const Container = (value) => ({
+            value,
+            map(fn)
+            {
+                return Container(fn(value));
+            }
+        });
+
+        Container.of = Container;
+        const count = Container.of(2);
+
+        const pipe = (funA, funB) => x => funB(funA(x));
+        const incOne = (x) => x+1;
+        const double = (x) => x*2;
+        const addTwo = (x) => x+2;
+
+        let result = count.map(incOne)
+                          .map(addTwo)
+                          . map(double);
+
+        console.log('Count ', count);
+        console.log('Result ', result);
+
+        // Functor Rule 1 and 2
+        let result2 = count.map(identity);
+        console.log('Rule 1 Result ', result2.value == count.value);
+
+        // map( g . h) = (map g) . (map h)
+        let newFunc = pipe(incOne, addTwo);
+        let result3 = count.map(newFunc);
+        let result4 = count.map(incOne)
+                           . map(addTwo);
+
+        console.log('Rule 2 Result ', result3.value == result4.value);
+        
+    </script> 
+</html>
