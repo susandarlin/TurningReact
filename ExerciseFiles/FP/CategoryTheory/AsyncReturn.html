@@ -1,0 +1,29 @@
+<html>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ramda/0.29.0/ramda.min.js" integrity="sha512-5x/n+aOg68Z+O/mq3LW2pC2CvEBSgLl5aLlOJa87AlYM1K8b8qsZ7NTHLe3Hu56aS2W0rgEgVCFA3RM12IXAGw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+    <script>
+        
+        // Asynchronous flow
+
+        function callback(result)
+        {
+            console.log('Callback excuted ', result);
+        }
+        function doAsync(func)
+        {
+            console.log('Function called');
+            setTimeout(() => {
+                console.log('Execute after 1second');
+                func(100);
+            },1000);
+        }
+
+        let result = doAsync(callback);
+        console.log('Result ', result);
+
+        // left - failure case (not work Map)
+        // right - success case (work Map)
+    </script> 
+
+</html>

@@ -1,0 +1,59 @@
+<html>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ramda/0.29.0/ramda.min.js" integrity="sha512-5x/n+aOg68Z+O/mq3LW2pC2CvEBSgLl5aLlOJa87AlYM1K8b8qsZ7NTHLe3Hu56aS2W0rgEgVCFA3RM12IXAGw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+    <script>
+        // same with Try Catch and Left , Right
+        const Left = (value) => ({
+            map(){
+                return Left.of(value);
+            },
+            
+            val(){
+                return value;
+            },
+            matchWith(context)
+            {
+                return context.left(value);
+            }
+        });
+        Left.of = value => Left(value);
+
+
+
+        const Right = (value) => ({
+            val(){
+                return value;
+            },
+            map(fn){
+                return Right.of(fn(value));
+            },
+            matchWith(context)
+            {
+                return context.right(value);
+            }
+        });
+        Right.of = Right;
+
+        function div(a,b)
+        {
+            if (isNaN(a) || isNaN(b))
+            {
+                return Left('A or b is NaN');
+            }
+            else
+            {
+                return Right(a/b);
+            }
+        }
+
+        let inc = (x) => x + 1;
+        let result = div(10,2)
+                    .map(inc)
+                    .matchWith({
+                        right:(val) => console.log('Success case ', val),
+                        left:(err) => console.log('There is error ', err)
+                    })
+    </script> 
+
+</html>

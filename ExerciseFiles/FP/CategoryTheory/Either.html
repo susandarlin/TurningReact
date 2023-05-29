@@ -1,0 +1,89 @@
+<html>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ramda/0.29.0/ramda.min.js" integrity="sha512-5x/n+aOg68Z+O/mq3LW2pC2CvEBSgLl5aLlOJa87AlYM1K8b8qsZ7NTHLe3Hu56aS2W0rgEgVCFA3RM12IXAGw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+    <script>
+        /*
+        Either
+            Nothing
+            Something
+        */
+        
+        const Nothing = (value) => ({
+            value,
+            map(fun)
+            {
+                return Nothing(value);
+            }
+        });
+
+        Nothing.of = Nothing;
+
+        const Some = (value) => ({
+            value,
+            map(fun)
+            {
+                return Some(fun(value));
+            }
+        });
+        
+        Some.of = Some;
+
+        const Either = {
+            Some,
+            Nothing
+        }
+
+        const incOne = (x) => x + 1;
+        let nothing = Nothing.of('some error')
+                             .map(incOne);
+        console.log('Nothing ', nothing);
+
+        let something = Some.of(3)
+                             .map(incOne);
+                            
+        console.log('Nothing ', something);
+        
+        function div(a,b)
+        {
+            if(isNaN(a) || isNaN(b))
+            {
+                //throw exception
+                return Nothing.of('A or B is NaN');
+            }
+            else{
+                return Some.of(a/b);
+            }
+        }
+        
+        // if contain (of) in functor that is Pointed Functor
+
+        // Reporting Error message in Either
+        // Use Nothing for error handling and Some for Success
+        // div(10,2)
+        let result = div(10,NaN)
+                .map(incOne);
+        console.log('Result ', result);
+
+        /*
+        Error handling
+            railway oriented propgramming
+
+        fsharpforfunandprofit.com
+
+        Container(3)
+            => value = 3
+
+            Unbox - Join
+            Box - Join
+        Container (Container(3)) // Unbox => use Join
+            => value - Container
+
+        Chain - no box
+
+        */
+        
+        
+    </script> 
+
+</html>

@@ -1,0 +1,31 @@
+<html>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ramda/0.29.0/ramda.min.js" integrity="sha512-5x/n+aOg68Z+O/mq3LW2pC2CvEBSgLl5aLlOJa87AlYM1K8b8qsZ7NTHLe3Hu56aS2W0rgEgVCFA3RM12IXAGw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+    <script>
+               
+        // try catch  - imperative approach
+        function div(a,b)
+        {
+            if(isNaN(a) || isNaN(b))
+            {
+                //throw exception
+                throw new Error('A or B is NaN');
+            }
+            else{
+                return a/b;
+            }
+        }
+
+        try{
+            let result = div(10,NaN);
+            console.log('Result ', result);
+        }
+        catch(e)
+        {
+            console.log('Error ', e);
+        }
+        
+    </script> 
+
+</html>

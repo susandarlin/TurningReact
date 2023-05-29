@@ -1,0 +1,41 @@
+<html>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ramda/0.29.0/ramda.min.js" integrity="sha512-5x/n+aOg68Z+O/mq3LW2pC2CvEBSgLl5aLlOJa87AlYM1K8b8qsZ7NTHLe3Hu56aS2W0rgEgVCFA3RM12IXAGw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+    <script>
+        
+        // Asynchronous flow
+        function doAsync()
+        {
+            console.log('Function called');
+            setTimeout(() => {
+                console.log('Execute after 1second');
+                throw new Error('Something went wrong');
+            },1000);
+        }
+
+        // doAsync();
+        // console.log('After called');
+
+
+        /*
+        result => Function called
+                  After called
+                  Execute after 1second
+        */
+
+
+        try{
+            doAsync();
+        }
+        catch(e)
+        {
+            console.log('Catch block e ', e);
+        }
+        console.log('After called');
+
+        // try catch problem - only for Synchronous, can't control for Asynchronous
+        
+    </script> 
+
+</html>

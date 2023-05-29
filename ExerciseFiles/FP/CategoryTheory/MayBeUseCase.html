@@ -64,7 +64,7 @@
         const getSupervisor = (employee) => employees.data[employee.supervisor];
         const getName = (employee) => employee.name;
 
-        // let empId = -3; // not get error
+        // let empId = -3; // not get error even if data doesn't exist, we will get null but we can't know cause of error, limitation of MayBe
         let empId = 3;
         const result = MayBe.of(empId)
                             .map(getEmployeeById)

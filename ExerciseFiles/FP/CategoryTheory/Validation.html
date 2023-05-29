@@ -1,0 +1,74 @@
+<html>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ramda/0.29.0/ramda.min.js" integrity="sha512-5x/n+aOg68Z+O/mq3LW2pC2CvEBSgLl5aLlOJa87AlYM1K8b8qsZ7NTHLe3Hu56aS2W0rgEgVCFA3RM12IXAGw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+    <script>
+
+        let obj = {
+            name : 'TK',
+            age : 38,
+            email : 'someone@gmail.com'
+        };
+
+        const notEmpty = (x) => x.length > 0;
+        // const isNameNotEmpty = (obj) => obj.name.length > 0;
+
+        const minLength = (len) => (x) => x.length >= len;
+        const maxLength = (len) => (x) => x.length <= len;
+        const isNameNotEmpty = (obj) => notEmpty(obj.name);
+
+        const isEmailNotEmpty = (obj) => notEmpty(obj.email);
+        const validEmail = (obj) => obj.email.includes('@');
+
+        const ageValidRange = (obj) => obj.age > 0 && obj.age < 100;
+
+        function andCombinators(...validators)
+        {            
+            return function(x)
+            {                
+                return validators.reduce((a,validator) => {
+                // console.log('A ', a, 'B ', validator);
+                return a && validator(x);
+                }, true);
+            }
+        }
+
+        function orCombinators(...validators)
+        {            
+            return function(x)
+            {                
+                return validators.reduce((a,validator) => {
+                // console.log('A ', a, 'B ', validator);
+                return a || validator(x);
+                }, false); // to work Right side
+            }
+        }
+
+        /*
+        console.log('Min Length ', minLength(3)('TK'));
+        console.log('Max Length ', maxLength(3)('TKEEE'));
+        console.log('Max Length ', maxLength(3)('TKE'));
+        */
+
+        const validators = [minLength(3), maxLength(5)];
+        console.log(andCombinators(...validators)('Hello'));
+        console.log(andCombinators(...validators)('He'));
+
+        const nameAndEmailValidator = andCombinators(isNameNotEmpty, isEmailNotEmpty);
+        console.log('Name and Email not empty ', nameAndEmailValidator(obj));
+        console.log('Name and Email not empty ', nameAndEmailValidator({
+            name : ''
+        }));
+
+        const orValidator = orCombinators(isEmailNotEmpty, ageValidRange);
+        console.log('OrValidator ', orValidator({
+            email : '',
+            age : 38
+        }));
+        console.log('OrValidator ', orValidator({
+            email : '',
+            age : 130
+        }));
+    </script> 
+
+</html>
