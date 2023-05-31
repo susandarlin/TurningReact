@@ -1,0 +1,83 @@
+<html>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ramda/0.29.0/ramda.min.js" integrity="sha512-5x/n+aOg68Z+O/mq3LW2pC2CvEBSgLl5aLlOJa87AlYM1K8b8qsZ7NTHLe3Hu56aS2W0rgEgVCFA3RM12IXAGw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+    <script>
+
+         /*
+         IO Monad - delay execution for side affect function
+         IO is side effect
+         so use IO Monad
+         Use for side effect function 
+         there is no side effect before side effect function, so can compose with param
+         there is side effect after run side effect function. 
+
+         thunk - same with callback (include side effect), will run some time
+         run() - delay function, delay excecution
+         map() - return new IO(() => fn(this.run()))
+         bind() - flatmap - return new IO(() => fn(this.run()).run()) => unbox
+         above methods will not run before calling run() method
+         ioLog - consold.log()
+         lift - normal value to monad value
+
+         Promise - network call (side affect) , use it when call ajax
+        */
+
+        /*
+            Writer Monad
+                function inc(x) // Problem
+                {
+                    console.log('X is , x); // side affect
+                    return x + 1;
+                }
+
+                function inc(x, logs) // Writer Monad - singal output
+                {
+                    return [x+1, logs + 'X is ' + x]; // Aother problem is that can't compose
+                }
+
+                compose (f,g)
+                {
+                    [result, log1] = g(x)
+                    [result2, log2] = f(result)
+
+                    return [result2, log1 + log2]
+                }
+        */
+
+        const compose = (f,g) => x => f(g(x));
+
+        const inc = (x) => [x + 1, `inc called with ${x}`];
+        const double = (x) => [x*2, `double called with ${x}`];
+
+        let [result, logStr] = inc(10);
+        console.log('Result ', result, logStr);
+
+        let newFunc = compose(double, inc);
+        console.log('NewFunc ', newFunc(10)); // get error when compose them
+
+        let composeDebuggable = (f,g) => x => {
+            let [result, logStr] = g(x);
+            let [result2, logStr2] = f(result);
+
+            return [result2, logStr + ', ' + logStr2];
+        }
+        newFunc = composeDebuggable(double, inc);
+        console.log('composeDebuggable ', newFunc(10)); // another problem - write special Compose function
+
+
+        const bind = (f) => function (tuple) {
+            const [result, log1] = tuple,
+                    [result2, log2] = f(result);
+
+            return [result2, log1 + ', ' + log2];
+        };
+
+        let newFunctionWithTuple = compose(bind(inc), bind(double)); // can use normal Compose after using Bind
+        let unit = (x) => [x, ''];
+        let fincalFunc = compose(newFunctionWithTuple, unit );
+        console.log('FinalFunc ', fincalFunc(10));
+
+    </script> 
+
+</html>

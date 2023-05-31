@@ -1,0 +1,35 @@
+<html>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ramda/0.29.0/ramda.min.js" integrity="sha512-5x/n+aOg68Z+O/mq3LW2pC2CvEBSgLl5aLlOJa87AlYM1K8b8qsZ7NTHLe3Hu56aS2W0rgEgVCFA3RM12IXAGw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+    <script>
+
+        let arr = [1,2,3];
+        let func = (x) => [x, x * 2];
+        let result = arr.map(func);
+        console.log('Result ', result);
+
+        /*
+            result - Problem
+            [1, 2]
+            [2, 4]
+            [3, 6]
+        */
+
+        let resultFlatMap = arr.flatMap(func);
+        console.log('Result FlatMap', resultFlatMap); // UnBox
+
+        /*
+            resultFlatMap => [1, 2, 2, 4, 3, 6]
+        */
+
+        /*
+            EndoFunctor
+                Same Category 
+                    type
+                        String -> String ( EndoFunctor )
+                        String -> Integet ( not EndoFunctor )
+        */
+    </script> 
+
+</html>

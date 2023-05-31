@@ -9,7 +9,10 @@
             map(){
                 return Failure.of(value);
             },
-            
+            flatMap(fn)
+            {
+                return Failure.of(value);
+            },
             val(){
                 return value;
             },
@@ -35,8 +38,13 @@
 
 
         const Success = (value) => ({
+            tag: 'Success',
             val(){
                 return value;
+            },
+            flatMap(fn)
+            {
+                return fn(value);
             },
             map(fn){
                 return Success.of(fn(value));
@@ -60,28 +68,12 @@
         });
         Success.of = Success;
 
-        let obj = {
-            name : 'TK',
-            age : 38,
-            email : 'someone@gmail.com'
-        };
-
         const notEmpty = (x) => x!= '';
-        // const isNameNotEmpty = (obj) => obj.name.length > 0;
 
         const minLength = (len) => (x) => x.length >= len;
         const maxLength = (len) => (x) => x.length <= len;
 
-        const isNameNotEmpty = (obj) => notEmpty(obj.name)?
-                                                    Success(obj)
-                                                    : Failure('Name is empty');
-
-        const isEmailNotEmpty = (obj) => notEmpty(obj.email)?
-                                                        Success(obj)
-                                                        :Failure('Email is empty');
-        const validEmail = (obj) => obj.email.includes('@');
-
-        const ageValidRange = (obj) => obj.age > 0 && obj.age < 100;
+        
 
         function andCombinators(...validators)
         {            
@@ -105,12 +97,7 @@
             }
         }
 
-        /*
-        [validator -> Success | Failure]
-
-        Success -> 1
-        Failure -> 0
-        */
+        
         function validatorCombinator(...validators)
         {
             return function(obj)
@@ -119,30 +106,13 @@
                 // console.log('A ', previousResult, 'B ', validator);
                 let result = validator(obj);
                 return previousResult.and(result);
-
-                /*
-                if (result.tag == 'Failure')
-                {
-                    if(previousResult.tag == 'Failure')
-                    {
-                        let errorMessage = previousResult.val() + ' ,' + result.val();
-                        return Failure(errorMessage);
-                    }
-                    return result;
-                }
-                else
-                {
-                    return Success(obj);
-                }
-                */
-
-                // return previousResult && validator(obj);
-
                 }, Success(obj));
             }
         }        
         
+        /*
         const combinator = validatorCombinator(isNameNotEmpty, isEmailNotEmpty);
+        
         combinator({
             name : '',
             email: '',
@@ -150,26 +120,50 @@
             success:(obj) => console.log('Validation ok ', obj),
             failure:(obj) => console.log('Validation failed ', obj)
         });
+        */
 
-        // console.log('Combibator ', combinator({
-        //     name : '',
-        //     email : ''
-        // }).val()); // Faulure
-        // console.log('Combibator ', combinator(obj).val()); // Success
+        let obj = {
+            name : 'TK',
+            age : 38,
+            email : 'someone@gmail.com'
+        };
 
-        combinator(obj)
-                    .map(x => console.log('Save to db ', x));
+        
+        const isNameNotEmpty = (obj) => notEmpty(obj.name)?
+                                                    Success(obj)
+                                                    : Failure('Name is empty');
+
+        const isEmailNotEmpty = (obj) => notEmpty(obj.email)?
+                                                        Success(obj)
+                                                        :Failure('Email is empty');
+        const validEmail = (obj) => obj.email.includes('@')
+                                                        ?Success(obj)
+                                                        :Failure('Invalid email');
+
+        const ageValidRange = (obj) => obj.age > 0 && obj.age < 100
+                                                    ?Success(obj)
+                                                    :Failure('Invalid age');
+        
+        let validationResult = Success.of(obj)
+                                            // .map(isNameNotEmpty) // Box(Box(x))
+                                            // .map(validEmail); // Problem, should be Box(x)
+                                            .flatMap(isNameNotEmpty) // if error, don't work next line
+                                            .flatMap(validEmail);
+        console.log('Valadation Result ', validationResult.val());
 
         /*
-        Success
-            true 
-                false -> false
-                true -> true
+            Success.map
+                Success.of(Success.of(obj)) => Box(Box(obj))
 
-        Failure
-            false
-                false -> false
-                true -> false
+            map
+                normal function
+                (inc)=> x => x + 1;
+
+            Monadic function(return Container Types) => use FlatMap
+                (x) => Container.of(x + 1)
+
+            Monad  => contain FlatMap
+                   => chanin monadic function
         */
 
         
