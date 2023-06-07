@@ -1,0 +1,43 @@
+<html>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ramda/0.29.0/ramda.min.js" integrity="sha512-5x/n+aOg68Z+O/mq3LW2pC2CvEBSgLl5aLlOJa87AlYM1K8b8qsZ7NTHLe3Hu56aS2W0rgEgVCFA3RM12IXAGw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+    <script>
+
+         /*
+            Len - same with getter and setter, can compose
+         */
+
+         let obj = {
+            name : 'TK',
+            age : 23,
+            score : -30,
+            /*
+            address: {
+                city: "Yangon",
+            }
+            */
+         };
+         let another = {
+            ...obj,
+            age : obj.age + 1,
+            address : {
+                city : "Kalaw",
+                state : "Shan"
+            }
+         };
+
+         function assoc(propName, value, obj)
+         {
+            return {
+                ...obj,
+                [propName] : value,
+            }
+         }
+         let clone = assoc('age', 50, obj);
+         console.log('Obj ', obj);
+         console.log('Clone ', clone); // can't compose
+
+    </script> 
+
+</html>

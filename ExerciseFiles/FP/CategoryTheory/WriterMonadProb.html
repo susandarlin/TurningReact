@@ -78,6 +78,13 @@
         let fincalFunc = compose(newFunctionWithTuple, unit );
         console.log('FinalFunc ', fincalFunc(10));
 
+        /*
+            const inc = (x) => x + 1;
+            const inc = ([x, logs]) => [x + 1, log + 'log'];
+
+            cannot compose, so use bind by passing tuple param and return tuple
+        */
+
     </script> 
 
 </html>
