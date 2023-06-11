@@ -1,0 +1,48 @@
+<html>
+    <script>
+
+        class Engine
+        {
+            start()
+            {
+                console.log('Engine Start');
+            }
+        } 
+        class ElectricEngine
+        {
+            start()
+            {
+                console.log('ElectricEngine Start');
+            }
+        }
+        class DieselEngine
+        {
+            start()
+            {
+                console.log('DieselEngine Start');
+            }
+        }
+        class Car 
+        {
+            // constructor()
+            // {
+            //     // Open Close principle violate, not extensiable
+            //     this.engine = new Engine(); // can't use Electric and Diesel Engines, need to change code
+            // }
+            constructor(engine) // Dependency Inversion
+            {
+                // Open Close principle violate
+                this.engine = new Engine(); // can't use Electric and Diesel Engines, need to change code
+            }
+            start()
+            {
+                console.log('Car start');
+                this.engine.start();               
+            }
+        }
+        let engine = new DieselEngine(); // Dependency Inversion
+        let car = new Car(engine);
+        car.start();
+
+    </script>
+</html>

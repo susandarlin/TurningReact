@@ -1,0 +1,36 @@
+<html>
+    <script>
+        // Standar Library is default method in language (string, isNaN, Date)
+        // Third Party Library - parsing
+        // Set - element that is no duplicate
+        // remove duplicate element
+        // ES6 only can use this methods
+        let arr = [10, 20, 10, 30, 20];
+
+        let set = new Set(arr);
+        console.log('Set ', set);
+        console.log('Set.size ', set.size);
+
+        set.add('one');
+        set.add(3);
+        set.add(10);
+
+        console.log('Set ', set);
+        console.log('Set.size ', set.size);
+
+        set.add([10, 20]);
+        console.log('Set ', set);
+
+        set.delete(10);
+        console.log('Set ', set);
+
+        set.delete("20"); // === check triple equal, will not delete
+        console.log('Set ', set);
+
+        set.add('a').add('b').add('c');
+        console.log('Set ', set);
+
+        // set.clear(); // delete all of value and size is zero
+        // console.log('Set ', set);
+    </script>
+</html>

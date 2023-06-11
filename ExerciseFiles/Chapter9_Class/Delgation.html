@@ -1,0 +1,36 @@
+<html>
+    <script>
+
+        // Inheritance violate Encapsulation
+        // can use Delgation instead of Inheritance
+        
+        class Shape // super class, abstract class
+        {
+            constructor()
+            {
+                console.log('Shape constructor');
+            }
+            draw()
+            {
+                console.log('Shape draw');
+            }
+        }
+        class Circle 
+        {
+            constructor()
+            {
+                this.shape = new Shape(); // delgation or composition
+                console.log('Circle constructor');
+            }
+            draw()
+            {
+                this.shape.draw();
+                console.log('Circle draw');
+            }
+        }
+
+        let circle = new Circle();
+        circle.draw();
+
+    </script>
+</html>

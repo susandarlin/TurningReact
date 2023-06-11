@@ -1,0 +1,58 @@
+<html>
+    <script>
+
+        class Shape // super class
+        {
+            constructor()
+            {
+                console.log('Shape constructor');
+            }
+            draw()
+            {
+                console.log('Shape draw');
+            }
+        }
+        class Circle extends Shape // sub class
+        {
+            constructor()
+            {
+                super(); // call parent constructor
+                console.log('Circle constructor');
+            }
+            draw()
+            {
+                super.draw(); // call parent method
+                console.log('Circle draw');
+                this.AnotherMethod();
+            }
+            AnotherMethod()
+            {
+                console.log('Another method');
+            }
+        }
+        class Rectangle extends Shape // sub class
+        {
+            draw()
+            {
+                super.draw(); // call parent method
+                console.log('Rectangle draw');
+            }
+        }
+
+        let shape = new Circle();
+        shape.draw();
+
+        shape = new Rectangle();
+        shape.draw();
+
+        shape = {
+            draw()
+            {
+                console.log('Another draw');
+            }
+        }
+
+        shape.draw();
+
+    </script>
+</html>
