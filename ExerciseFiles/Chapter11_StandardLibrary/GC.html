@@ -1,0 +1,49 @@
+<!-- 
+            method => store in stack memory
+            object => heap memory
+            [100, ---, 100]
+
+            function process()
+            {
+                let data = {
+                    name: 'TK'
+                };
+
+                let arr = new Array(3000) // Garbage
+                arr = null;
+            }
+            
+            stack => [data, arr]
+            heap => Object, array
+
+            Garbage Collection => Garbage variable clean
+            one variable reference Garbage variable, so can't save as Garbage this variable
+            when we use WeakMap and WeakSet, can save as Garbage variable even have reference variables -->
+
+
+<html>
+    <body>
+        <button id="btnAllocate" type="button">Allocate</button>
+        <button id="btnAssignNull" type="button">Assign Null</button>
+    </body>
+    <script>
+        let arr = []; // not to be Garbage variable, set it outside
+        let another;
+        // let map = new WeakMap();
+        let map = new Map();
+        map.set(arr, "Something");
+        document.getElementById('btnAllocate').addEventListener('click',() => {
+            console.log('Allocate');
+            for(let i = 0; i < 10; i++)
+                arr.push(new Array(1000_000));
+
+            another = arr; // even set null into arr that will not become garbage because there is a reference from "another" variable
+        });
+
+        document.getElementById('btnAssignNull').addEventListener('click',() => {
+            arr = null; // arr is garbage now
+            // Object become garbage when no one can reference it
+            another = null;
+        });
+    </script>
+</html>

@@ -1,0 +1,95 @@
+<html>
+    <body>
+        
+    </body>
+    <script>
+        
+        let re = /ab+c/; // pattern matching, eg => abc, abbbc, abbc
+        // test()
+        console.log('Re.test abc ', re.test('abc'));
+        console.log('Re.test abbc ', re.test('abbc'));
+        console.log('Re.test ac ', re.test('ac'));
+
+        // string.match(re)
+        console.log('Re.match helloabbcc ', 'helloabbcc'.match(re));
+
+        re = /[xzy]/; // group (OR)
+        console.log('/[xzy]/.test x ', re.test('x'));
+        console.log('/[xzy]/.test y ', re.test('y'));
+        console.log('/[xzy]/.test z ', re.test('z'));
+        console.log('/[xzy]/.test a ', re.test('a'));
+
+        re = /[0-9]+/; // - range, eg=> [a-zA-Z]
+        console.log('/[0-9]/.test 393992929 ', re.test('393992929'));
+        console.log('/[0-9]/.test 3 ', re.test('3'));
+        console.log('/[0-9]/.test ab ', re.test('ab'));
+
+        
+        re = /[^xyz]/; // Not
+        console.log('/[^xyz]]/.test x ', re.test('x'));
+        console.log('/[^xyz]]/.test y ', re.test('y'));
+        console.log('/[^xyz]]/.test z ', re.test('z'));
+        console.log('/[^xyz]]/.test a ', re.test('a'));
+
+        re = /^Java/; // Start With Java
+        console.log('/^Java]/.test Java ', re.test('Java'));
+        console.log('/^Java]/.test JavaScript ', re.test('JavaScript'));
+        console.log('/^Java]/.test  JavaScript ', re.test(' JavaScript'));
+
+        re = /^Java.b/; // any character except \n, \r
+        console.log('/^Java.b/.test Javacb ', re.test('Javacb'));
+        console.log('/^Java.b/.test Javakb ', re.test('Javakb'));
+        console.log('/^Java.b/.test  Java b ', re.test('Java\rb'));
+
+        re = /\d+/; // digit -> same with /[0-9]+/
+        console.log('/\d+/.test 393992929 ', re.test('393992929'));
+        console.log('/\d+/.test 3 ', re.test('3'));
+        console.log('/\d+/.test ab ', re.test('ab'));
+
+        re = /\D+/; // non digit
+        console.log('/\D+/.test 393992929 ', re.test('393992929'));
+        console.log('/\D+/.test 3 ', re.test('3'));
+        console.log('/\D+/.test ab ', re.test('ab'));
+
+        re = /\w+/; // Idnetifier [A-Za-z0-9], opposite /\W+/
+        console.log('/\w+/.test 393992929 ', re.test('393992929'));
+        console.log('/\w+/.test Abe_ ', re.test('Abe_'));
+        console.log('/\w+/.test abcd ', re.test('abcd'));
+        console.log('/\w+/.test $ ', re.test('$'));
+
+        re = /\s+/; // including space, tab, form feed, line feed and other Unicode spaces
+        console.log('/\s+/.test hello hi ', re.test('hello hi'));
+        console.log('/\s+/.test Abe_ ', re.test('Abe_'));
+
+        re = /\S+@\S+\.\S+/; // ecape . => (\.)
+        console.log('/\S+@\S+\.\S+/.test hello ', re.test('hello'));
+        console.log('/\S+@\S+\.\S+/.test hello@gmail.com ', re.test('hello@gmail.com'));
+        console.log('/\S+@\S+\.\S+/.test hello@gmail.2333 ', re.test('hello@gmail.2333'));
+        console.log('//\S+@\S+\.\S+/.test hello@gmail ', re.test('hello@gmail'));
+
+        re = /(a|b)+/; // include ab or a
+        console.log('/(a|b)+/.test aaab ', re.test('aaab'));
+        console.log('/(a|b)+/.test abab ', re.test('abab'));
+        console.log('/(a|b)+/.test ca ', re.test('ca'));
+        console.log('/(a|b)+/.test db ', re.test('db'));
+        console.log('/(a|b)+/.test dd ', re.test('dd'));
+
+        re = /Script$/; // end with "Script"
+        console.log('/Script$/.test JavaScript ', re.test('JavaScript'));
+        console.log('/Script$/.test NativeScript ', re.test('NativeScript'));
+        console.log('/Script$/.test Java ', re.test('Java'));
+
+        re = /\bm/; // word boundary, start in word
+        console.log('/\bm/.test moon ', re.test('moon'));
+        console.log('/\bm/.test demon ', re.test('demon'));
+        console.log('/\bm/.test demon milk ', re.test('demon milk'));
+        console.log('/\bm/.test room ', re.test('room'));
+
+        re = /\Bm/; // opposite
+        console.log('/\Bm/.test moon ', re.test('moon'));
+        console.log('/\Bm/.test demon ', re.test('demon'));
+        console.log('/\Bm/.test demon milk ', re.test('demon milk'));
+        console.log('/\Bm/.test room ', re.test('room'));
+
+    </script>
+</html>
