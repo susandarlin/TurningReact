@@ -1,0 +1,65 @@
+<html>
+    <body>
+        
+    </body>
+    <script>
+        
+      let arr = [
+        {
+            name : 'One',
+            value : 1,
+        },
+        {
+            name : 'tWO',
+            value : 2,
+        }        
+      ];
+
+      console.time("timelog");
+      console.log('ObjArr ', arr);
+      // Bug, lazy loading, work by reference
+      arr[0].value = 4;  
+      console.log('ObjArr ', arr);
+
+      console.debug('Debug');
+      console.info('Info');
+      console.warn('Warn');
+    //   console.error('Error');
+
+      function div(a,b)
+      {
+        // pre condition define
+        console.assert(!(isNaN(a) || isNaN(b)) , 'A or B is NaN');
+        return a/b;
+      }
+    //   div(NaN,10);
+    div(10,20);
+
+    console.table(["apples", "oranges", "bananas"]);
+
+    console.timeLog("timelog");
+
+    console.timeEnd("timelog");
+    console.timeLog("timelog");
+
+    console.group();
+    console.log('Level 1');
+    console.group();
+    console.log('Level 2');
+    console.groupEnd();
+
+    function one()
+    {
+      function two()
+      {
+          console.log("Two function");
+          console.trace();
+      }
+      two();
+    }
+    one();
+
+    console.dir(arr);// show array as directory
+
+    </script>
+</html>

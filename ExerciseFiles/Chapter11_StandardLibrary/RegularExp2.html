@@ -1,0 +1,56 @@
+<html>
+    <body>
+        
+    </body>
+    <script>
+        
+       const personList = `First_Name: John, Last_Name: Doe
+       First_Name: Jane, Last_Name: Smith`;
+
+       const regexpNames = /First_Name: (\w+), Last_Name: (\w+)/gm;
+       for(const match of personList.matchAll(regexpNames)) {
+        console.log(`Hello ${match[1]} ${match[2]}`);
+       }
+
+       /*
+        * => zero or more, eg - a*, aaaaa*
+        + => one or more
+        ? => zero or one
+       */
+
+
+       re = /a*/;
+       console.log('/a*/.test moon ', re.test('moon'));
+       console.log('/a*/.test aaa ', re.test('aaa'));
+
+       re = /a+/;
+       console.log('/a+/.test moon ', re.test('moon'));
+       console.log('/a+/.test aaa ', re.test('aaa'));
+       console.log('/a+/.test a ', re.test('a'));
+
+       re = /a?/g; // g is greed, match all
+       console.log('/a?/g.test moon ', re.test('moon'));
+       console.log('/a?/g.test aaa ', re.test('aaa'));
+       console.log('/a?/g.test a ', re.test('a'));
+
+       for(const match of 'aaa'.matchAll(re)) {
+        console.log(`Match ${match}`);
+       }
+
+       re = /\d{3}/g;
+       console.log('/\d{3}/g.test 122 ', re.test('122'));
+       console.log('/\d{3}/g.test 12 ', re.test('12'));
+       console.log('/\d{3}/g.test 1333 ', re.test('1333'));
+
+       re = /\d{3,}/g;
+       console.log('/\d{3,}/g.test 122 ', re.test('122'));
+       console.log('/\d{3,}/g.test 12 ', re.test('12'));
+       console.log('/\d{3,}/g.test 1333 ', re.test('1333'));
+
+       re = /\d{3,5}/g;
+       console.log('/\d{3,5}/g.test 122 ', re.test('122'));
+       console.log('/\d{3,5}/g.test 12 ', re.test('12'));
+       console.log('/\d{3,5}/g.test 1333 ', re.test('1333'));
+
+    </script>
+</html>

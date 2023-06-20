@@ -1,0 +1,57 @@
+<html>
+    <body>
+        
+    </body>
+    <script>
+        
+      let obj = {
+        name : 'TK',
+        age : 38,
+        milestone: ['Nothing', 'Something'],
+        _: "Data",
+        display() // no function in json, Use Object.Create()
+        {
+            console.log('This name ', this.name);
+        }
+      };
+      let str = JSON.stringify(obj); // stringify => convert obj to string
+      console.log('Str ', str);
+
+      let obj2 = JSON.parse(str, (key,value)=>{ // parse customization
+        if(key === '_')
+        {
+            return undefined;
+        }
+        return value;
+      }); // parse => convert string to obj
+      console.log('Obj2 ', obj2);
+
+      str = JSON.stringify(obj, ["name", "age"]);
+      console.log('Str ', str);
+
+      let address = {
+        city: "YGN"
+      };
+
+      let user = {
+        name : "username",
+        credential : "Something",
+        address: address, // nested
+        toJSON()
+        {
+            console.log('ToJSON ');
+            let that = this;
+            return{
+                username : that.name,
+                address: that.address
+            }
+        }
+      };
+      let str2 = JSON.stringify(user);
+      console.log('Str2 ', str2);
+
+      // limitation => map, function
+
+      // Internalization => should handle in server
+    </script>
+</html>

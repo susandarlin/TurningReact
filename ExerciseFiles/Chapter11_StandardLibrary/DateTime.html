@@ -1,0 +1,34 @@
+<html>
+    <body>
+        
+    </body>
+    <script>
+        
+       let date =  new Date();
+       console.log('Date ', date);
+
+       date = new Date(2023,5,14, 6, 30); // 2023-06-14, Month is zero base
+       console.log('Date ', date);
+
+       // best practice - use milisecond
+       let milisecond = date.getTime(); // Timestamps => can convert to Fully date
+       console.log('Milisecond ', milisecond);
+
+       date = new Date(milisecond);
+       console.log('Date ', date);
+
+
+       let json = {
+        date : date.getTime()
+       };
+       console.log('JSON ', JSON.stringify(json));
+
+       console.log('Year ', date.getFullYear());
+       console.log('Month ', date.getMonth());
+       console.log('Date ', date.getDate());
+       console.log('Day ', date.getDay()); // Wednesday
+
+
+       // Date arithmetic - use moment.js
+    </script>
+</html>
