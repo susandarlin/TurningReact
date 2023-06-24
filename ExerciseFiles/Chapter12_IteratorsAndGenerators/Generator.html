@@ -1,0 +1,31 @@
+<html>
+    <body>
+       
+    </body>
+    <script>
+
+        // Generator => include function* and yield
+        // work function partly
+        // can use in delay computation, lazy evaluation
+        function* getGenerator()
+        {
+            console.log('First step');
+            yield 1;
+            console.log('Second step');
+            yield 2;
+            console.log('Third step');
+            yield 3;
+        }
+        let gen = getGenerator();
+        /*
+        console.log('Gen ', gen.next());
+        console.log('Gen ', gen.next());
+        console.log('Gen ', gen.next());
+        console.log('Gen ', gen.next());
+        */
+        for(const i of gen)
+       {
+        console.log(i);
+       }
+    </script>
+</html>

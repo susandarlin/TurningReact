@@ -1,0 +1,28 @@
+<html>
+    <body>
+       
+    </body>
+    <script>
+
+        // Iterator - map, set
+        let arr = [1,2,3,4];
+        for(const i of arr)
+        {
+            console.log('I ', i);
+        }
+
+        let iterable = [99];
+        let iterator = iterable[Symbol.iterator]();
+
+        console.log('Iterator ', iterator.next()); // {value: 99, done: false}
+        console.log('Iterator ', iterator.next());
+        console.log('Iterator ', iterator.next());
+
+        for(let result = iterator.next(); !result.done; result = iterator.next())
+        {
+            console.log(result.value); // result.value == 99
+        }
+        
+
+    </script>
+</html>

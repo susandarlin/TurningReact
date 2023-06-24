@@ -1,0 +1,43 @@
+<html>
+    <body>
+       
+    </body>
+    <script>
+
+        // Generator -> can return value
+
+        function *oneAndDone()
+        {
+            yield 1;
+            return "Done";
+        }
+        // for of -> can get only Yield
+        for(let i of oneAndDone())
+        {
+            console.log('I ', i);
+        }
+
+        // next -> can get Yield and Return values
+        let gen = oneAndDone();
+        console.log('Gen ', gen.next());
+        console.log('Gen ', gen.next());
+        console.log('Gen ', gen.next());
+
+        // parse value
+        function *samllNumber()
+        {
+            console.log('First');
+            let y1 = yield 1;
+            console.log('Second ', y1);
+            let y2 = yield 2;
+            console.log('Third ', y2);
+        }
+        gen = samllNumber();
+        console.log('Gen ', gen.next("Hello"));
+        console.log('Gen ', gen.next("World"));
+        console.log('Gen ', gen.next("Hi"));
+
+        // Generator - pause computation and can run again
+
+    </script>
+</html>

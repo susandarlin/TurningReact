@@ -1,0 +1,41 @@
+<html>
+    <body>
+       
+    </body>
+    <script>
+
+        class Range
+        {
+            constructor(to)
+            {
+                this.to = to;
+            }
+
+            [Symbol.iterator]()
+            {
+                let i = 0;
+                let that = this;
+                return {
+                    next()
+                    {
+                        return {
+                            value : i++,
+                            done : i == (that.to + 1)
+                        };
+                    },
+                    [Symbol.iterator]()
+                    {
+                        return this;
+                    }
+                };
+            }
+        }
+
+        for (let i of new Range(5))
+        {
+            console.log(i);
+        }
+
+        //for complex tree sturcture
+    </script>
+</html>

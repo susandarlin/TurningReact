@@ -1,0 +1,20 @@
+<html>
+    <body>
+       
+    </body>
+    <script>
+
+        // JavaScript Event Loop => work singal thread
+        // Problem => Why show 'World' first even we set timer zero
+        setTimeout(() => {
+            console.log('World');
+        }, 0);
+        console.log('Hello');
+
+
+        // [funB - StackFrame]
+        // [funA - StackFrame]
+
+        // work worker for heavy computation - kind of multithreading
+    </script>
+</html>
